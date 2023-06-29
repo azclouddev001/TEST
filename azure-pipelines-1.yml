@@ -17,12 +17,9 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Azure subscription 1(316388a3-1df8-48a0-8232-a725fa43142f)'
     scriptType: 'ps'
     scriptLocation: 'inlineScript'
-    inlineScript: |
-      az --version
-      az account show
+    inlineScript: 'az --version'
