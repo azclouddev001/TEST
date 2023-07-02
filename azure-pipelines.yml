@@ -55,18 +55,18 @@ steps:
             }
         }'
 
-  #       # Define the username and password for Basic Authentication
-  #       $username = "TESPAT"
-  #       $pat = "w2ipmsguwbytjecpckfmhduzx5rvwrof6cevroiqu75erhxtjypa"
+        # Define the username and password for Basic Authentication
+        $username = "TESPAT"
+        $pat = "w2ipmsguwbytjecpckfmhduzx5rvwrof6cevroiqu75erhxtjypa"
 
-  #       # Encode the username and password for Basic Authentication
-  #       $credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${username}:${password}"))
+        # Encode the username and password for Basic Authentication
+        $credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${username}:${password}"))
 
-  #       # Send the POST request using Invoke-RestMethod
-  #       $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{
-  #           "Content-Type" = "application/json"
-  #           "Authorization" = "Bearer $pat"
-  #       } -Body $body
+        # Send the POST request using Invoke-RestMethod
+        $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{
+            "Content-Type" = "application/json"
+            "Authorization" = "Bearer $pat"
+        } -Body $body
 
-  #       # Print the response
-  #       $response
+        # Print the response
+        $response
