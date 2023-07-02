@@ -37,9 +37,11 @@ steps:
           }
         }
       }'
+      # Define the Personal Access Token (PAT)
+      token="dytjjdlg7wk4qdcezs5fypljfjieoyyp25ota3glde7ovhvf66mq"
 
       # Send the POST request using curl
-      response=$(curl -X POST -H "Content-Type: application/json" -d "$body" "$url")
+      response=$(curl -X POST -H "Content-Type: application/json" -d "$body" "$url" -H "Authorization: Bearer $token")
 
       # Print the response
       echo "$response"
