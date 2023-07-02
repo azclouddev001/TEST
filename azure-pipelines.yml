@@ -10,6 +10,7 @@ steps:
     inputs:
       azureSubscription: 'Azure subscription 1(316388a3-1df8-48a0-8232-a725fa43142f)'  # Replace with the name of your Azure subscription in Azure DevOps
       scriptLocation: 'inlineScript'
+      scriptType: 'pscore'
       inlineScript: 'az devops login --organization https://dev.azure.com/azclouddev01'
   
   # - task: PowerShell@2
