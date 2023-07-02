@@ -4,27 +4,43 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+  - main
 
 pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
 
+  - script: |
+      # Define the URL and request body
+      url="https://example.com/api/endpoint"
+      body='{
+        "contributionIds": ["ms.vss-admin-web.admin-teams-data-provider"],
+        "dataProviderContext": {
+          "properties": {
+            "setTeamAdmins": true,
+            "teamDescriptor": "vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
+            "admins": ["msa.YTIyOWViMGMtNTk4OC03Y2UzLWE0YWMtZjhkODZmNmM5Y2I0"],
+            "sourcePage": {
+              "url": "https://dev.azure.com/azclouddev01/AZCLOUDDEV01/_settings/teams?subjectDescriptor=vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
+              "routeId": "ms.vss-admin-web.project-admin-hub-route",
+              "routeValues": {
+                "project": "AZCLOUDDEV01",
+                "adminPivot": "teams",
+                "controller": "ContributedPage",
+                "action": "Execute",
+                "serviceHost": "41a5112a-aa0f-4eef-8ff7-9fc277bdbeb5 (azclouddev01)"
+              }
+            }
+          }
+        }
+      }'
 
+      # Send the POST request using curl
+      response=$(curl -X POST -H "Content-Type: application/json" -d "$body" "$url")
 
-- ${{ if eq(variables['environment'], 'dev') }}:
-  - task: AzureCLI@2
-    displayName: 'Run Prod Task'
-    inputs:
-      azureSubscription: 'Azure subscription 1'
-      scriptLocation: 'inlineScript'
-      inlineScript: 'az --version'
-- task: AzureCLI@2
-  displayName: 'Run Prod Task'
-  inputs:
-    azureSubscription: 'Azure subscription 1'
-    scriptLocation: 'inlineScript'
-    inlineScript: 'az --version'
+      # Print the response
+      echo "$response"
+    displayName: 'Curl POST Request'
