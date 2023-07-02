@@ -14,8 +14,8 @@ steps:
   displayName: 'Run a one-line script'
 
 
-- ${{ if eq(variables['environment'], 'dev') }}:
-  - task: AzureCLI@2
+
+- task: AzureCLI@2
     displayName: 'Run Dev Task'
     inputs:
       azureSubscription: 'Azure subscription 1'
