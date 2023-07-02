@@ -45,7 +45,7 @@ steps:
 
         # Define the username and PAT
         $username = "TESPAT"
-        $pat = "w2ipmsguwbytjecpckfmhduzx5rvwrof6cevroiqu75erhxtjypa"
+        $pat = "4bgksmd72jy47runnvggcje5s5w6ufsc6sjj4hcai5edfguzrofq"
 
         # Send the POST request using Invoke-RestMethod
         $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{
