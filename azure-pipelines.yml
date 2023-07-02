@@ -5,27 +5,15 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-
   - script: az --version
     displayName: 'Show Azure CLI version'
 
   - script: az extension add -n azure-devops
     displayName: 'Install Azure DevOps Extension'
 
-  - script: echo ${AZURE_DEVOPS_CLI_PAT} | az devops login
+  - script: echo $(System.AccessToken) | az devops login
     displayName: 'Login Azure DevOps Extension'
-    env:
-      AZURE_DEVOPS_CLI_PAT: $(System.AccessToken)
-    
-  
-  # - task: AzureCLI@2
-  #   displayName: 'Azure CLI Login'
-  #   inputs:
-  #     azureSubscription: 'Azure subscription 1(316388a3-1df8-48a0-8232-a725fa43142f)'  # Replace with the name of your Azure subscription in Azure DevOps
-  #     scriptLocation: 'inlineScript'
-  #     scriptType: 'pscore'
-  #     inlineScript: 'az devops login --organization https://dev.azure.com/azclouddev01'
-  
+
   - task: PowerShell@2
     displayName: 'Run PowerShell Script'
     inputs:
@@ -55,12 +43,9 @@ steps:
             }
         }'
 
-        # Define the username and password for Basic Authentication
+        # Define the username and PAT
         $username = "TESPAT"
         $pat = "w2ipmsguwbytjecpckfmhduzx5rvwrof6cevroiqu75erhxtjypa"
-
-        # Encode the username and password for Basic Authentication
-        $credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${username}:${password}"))
 
         # Send the POST request using Invoke-RestMethod
         $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{
