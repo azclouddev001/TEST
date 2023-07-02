@@ -8,7 +8,7 @@ steps:
   - task: AzureCLI@2
     displayName: 'Azure CLI Login'
     inputs:
-      azureSubscription: '316388a3-1df8-48a0-8232-a725fa43142f'  # Replace with the name of your Azure subscription in Azure DevOps
+      azureSubscription: 'Azure subscription 1(316388a3-1df8-48a0-8232-a725fa43142f)'  # Replace with the name of your Azure subscription in Azure DevOps
       scriptLocation: 'inlineScript'
       inlineScript: 'az devops login --organization https://dev.azure.com/azclouddev01'
   - task: PowerShell@2
