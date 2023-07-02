@@ -54,4 +54,4 @@ steps:
         } -Body $body
 
         # Print the response
-        $response
+        $response | ConvertTo-Json
