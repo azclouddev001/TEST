@@ -15,7 +15,7 @@ steps:
 
 
 
-- ${{ if eq(variables['environment'], 'prod') }}:
+- ${{ if eq(variables['environment'], 'dev') }}:
   - task: AzureCLI@2
     displayName: 'Run Prod Task'
     inputs:
