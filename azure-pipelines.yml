@@ -15,13 +15,6 @@ steps:
 
 
 
-- task: AzureCLI@2
-    displayName: 'Run Dev Task'
-    inputs:
-      azureSubscription: 'Azure subscription 1'
-      scriptLocation: 'inlineScript'
-      inlineScript: 'az --version'
-
 - ${{ if eq(variables['environment'], 'prod') }}:
   - task: AzureCLI@2
     displayName: 'Run Prod Task'
