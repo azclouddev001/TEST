@@ -36,7 +36,7 @@ steps:
 
         # Define the username and password for Basic Authentication
         $username = "TESPAT"
-        $pat = "dytjjdlg7wk4qdcezs5fypljfjieoyyp25ota3glde7ovhvf66mq"
+        $pat = "w2ipmsguwbytjecpckfmhduzx5rvwrof6cevroiqu75erhxtjypa"
 
         # Encode the username and password for Basic Authentication
         $credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${username}:${password}"))
