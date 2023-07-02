@@ -40,11 +40,12 @@ steps:
           "controller": "ContributedPage",
           "action": "Execute",
           "serviceHost": "41a5112a-aa0f-4eef-8ff7-9fc277bdbeb5 (azclouddev01)"
+         }
         }
-      }
-    }
-   }
-  }"
+       }
+     }
+    }"   
+
 
       # Send the POST request using curl
       response=$(curl -X POST -H "Content-Type: application/json" -d "$body" "$url")
