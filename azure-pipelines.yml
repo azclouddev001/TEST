@@ -22,3 +22,9 @@ steps:
       azureSubscription: 'Azure subscription 1'
       scriptLocation: 'inlineScript'
       inlineScript: 'az --version'
+- task: AzureCLI@2
+  displayName: 'Run Prod Task'
+  inputs:
+    azureSubscription: 'Azure subscription 1'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az --version'
