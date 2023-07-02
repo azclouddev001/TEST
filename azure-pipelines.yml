@@ -11,41 +11,41 @@ steps:
       targetType: 'inline'
       script: |
         # Define the URL and request body
-$url = "https://dev.azure.com/azclouddev01/_apis/Contribution/HierarchyQuery?api-version=5.0-preview"
-$body = '{
-    "contributionIds": ["ms.vss-admin-web.admin-teams-data-provider"],
-    "dataProviderContext": {
-        "properties": {
-            "setTeamAdmins": true,
-            "teamDescriptor": "vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
-            "admins": ["msa.YTIyOWViMGMtNTk4OC03Y2UzLWE0YWMtZjhkODZmNmM5Y2I0"],
-            "sourcePage": {
-                "url": "https://dev.azure.com/azclouddev01/AZCLOUDDEV01/_settings/teams?subjectDescriptor=vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
-                "routeId": "ms.vss-admin-web.project-admin-hub-route",
-                "routeValues": {
-                    "project": "AZCLOUDDEV01",
-                    "adminPivot": "teams",
-                    "controller": "ContributedPage",
-                    "action": "Execute",
-                    "serviceHost": "41a5112a-aa0f-4eef-8ff7-9fc277bdbeb5 (azclouddev01)"
+        $url = "https://dev.azure.com/azclouddev01/_apis/Contribution/HierarchyQuery?api-version=5.0-preview"
+        $body = '{
+            "contributionIds": ["ms.vss-admin-web.admin-teams-data-provider"],
+            "dataProviderContext": {
+                "properties": {
+                    "setTeamAdmins": true,
+                    "teamDescriptor": "vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
+                    "admins": ["msa.YTIyOWViMGMtNTk4OC03Y2UzLWE0YWMtZjhkODZmNmM5Y2I0"],
+                    "sourcePage": {
+                        "url": "https://dev.azure.com/azclouddev01/AZCLOUDDEV01/_settings/teams?subjectDescriptor=vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
+                        "routeId": "ms.vss-admin-web.project-admin-hub-route",
+                        "routeValues": {
+                            "project": "AZCLOUDDEV01",
+                            "adminPivot": "teams",
+                            "controller": "ContributedPage",
+                            "action": "Execute",
+                            "serviceHost": "41a5112a-aa0f-4eef-8ff7-9fc277bdbeb5 (azclouddev01)"
+                        }
+                    }
                 }
             }
-        }
-    }
-}'
+        }'
 
-# Define the username and password for Basic Authentication
-$username = "TESPAT"
-$password = "dytjjdlg7wk4qdcezs5fypljfjieoyyp25ota3glde7ovhvf66mq"
+        # Define the username and password for Basic Authentication
+        $username = "TESPAT"
+        $password = "dytjjdlg7wk4qdcezs5fypljfjieoyyp25ota3glde7ovhvf66mq"
 
-# Encode the username and password for Basic Authentication
-$credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${username}:${password}"))
+        # Encode the username and password for Basic Authentication
+        $credentials = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes("${username}:${password}"))
 
-# Send the POST request using Invoke-RestMethod
-$response = Invoke-RestMethod -Uri $url -Method POST -Headers @{
-    "Content-Type" = "application/json"
-    "Authorization" = "Basic ${credentials}"
-} -Body $body
+        # Send the POST request using Invoke-RestMethod
+        $response = Invoke-RestMethod -Uri $url -Method POST -Headers @{
+            "Content-Type" = "application/json"
+            "Authorization" = "Basic ${credentials}"
+        } -Body $body
 
-# Print the response
-$response
+        # Print the response
+        $response
