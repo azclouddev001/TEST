@@ -38,7 +38,7 @@ steps:
         }
       }'
       # Define the username and password for Basic Authentication
-      username="TESPAT
+      username="TESPAT"
       password="dytjjdlg7wk4qdcezs5fypljfjieoyyp25ota3glde7ovhvf66mq"
       
       # Encode the username and password for Basic Authentication
