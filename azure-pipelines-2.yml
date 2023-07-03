@@ -1,0 +1,64 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+
+- script: az --version
+  displayName: 'Show Azure CLI version'
+
+- script: az extension add -n azure-devops
+  displayName: 'Install Azure DevOps Extension'
+
+- script: echo $(System.AccessToken) | az devops login
+  displayName: 'Login Azure DevOps Extension'
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      $url = "https://dev.azure.com/azclouddev01/_apis/Contribution/HierarchyQuery?api-version=5.0-preview"
+        $body = '{
+            "contributionIds": ["ms.vss-admin-web.admin-teams-data-provider"],
+            "dataProviderContext": {
+                "properties": {
+                    "setTeamAdmins": true,
+                    "teamDescriptor": "vssgp.Uy0xLTktMTU1MTM3NDI0NS0zMzY2MDExNzEwLTEwMjMzNjUxODgtMzIxMDQ4NDIxMS00MTE2NDUwMTQxLTEtMTczNDk4MDgzLTM1MTI0OTk1MzAtMjc2NDQwNDExOC00NjEzMjk1NDk",
+                    "admins": ["msa.YTIyOWViMGMtNTk4OC03Y2UzLWE0YWMtZjhkODZmNmM5Y2I0"]
+                   }
+            }
+        }'
+
+        # Define the username and PAT
+        $username = "TESPAT"
+        $pat = "4bgksmd72jy47runnvggcje5s5w6ufsc6sjj4hcai5edfguzrofq"
+
+username="TESPAT"
+pat="4bgksmd72jy47runnvggcje5s5w6ufsc6sjj4hcai5edfguzrofq"
+
+response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $pat" -d "$body" "$url")
+echo "$response"
+
+
+
+
+
+
+
+      
+      
