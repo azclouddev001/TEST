@@ -45,11 +45,9 @@ steps:
         }'
 
         # Define the username and PAT
-        $username = "TESPAT"
-        $pat = "4bgksmd72jy47runnvggcje5s5w6ufsc6sjj4hcai5edfguzrofq"
+        username="TESPAT"
+        pat="4bgksmd72jy47runnvggcje5s5w6ufsc6sjj4hcai5edfguzrofq"
 
-username="TESPAT"
-pat="4bgksmd72jy47runnvggcje5s5w6ufsc6sjj4hcai5edfguzrofq"
 
 response=$(curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $pat" -d "$body" "$url")
 echo "$response"
