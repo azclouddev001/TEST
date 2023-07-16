@@ -20,12 +20,16 @@ steps:
       ScriptType: 'InlineScript'
       Inline: |
         # Make the GET request and extract the descriptor details
-        $response = Invoke-RestMethod -Uri "https://vssps.dev.azure.com/azclouddev01/_apis/graph/groups" -Method Get
+        response=$(az rest --method GET --uri "https://vssps.dev.azure.com/azclouddev01/_apis/graph/groups")
+        descriptor=$(echo "$response" | jq -r '.value[] | select(.displayName == "testeam").descriptor')
+        echo "$descriptor"
         
-        $descriptor = $response.value | Where-Object { $_.displayName -eq "testeam" } | Select-Object -ExpandProperty descriptor
+        # $response = Invoke-RestMethod -Uri "https://vssps.dev.azure.com/azclouddev01/_apis/graph/groups" -Method Get
+        
+        # $descriptor = $response.value | Where-Object { $_.displayName -eq "testeam" } | Select-Object -ExpandProperty descriptor
         
         # Display the descriptor details
-        Write-Host $descriptor
+       # Write-Host $descriptor
   
   # - task: PowerShell@2
   #   displayName: 'Run PowerShell Script'
